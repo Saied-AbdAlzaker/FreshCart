@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+
+:root {
+   --font-family: 'Encode Sans Expanded', sans-serif;
+}
+
+.input-style {
+   @apply block py-2.5 px-0 w-full text-sm text-gray bg-transparent border-0 border-b-2 border-main appearance-none dark:text-main dark:border-main dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main;
+}
+
+.label-style {
+   @apply absolute text-sm text-main dark:text-main duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] mt-2;
+}
+
+.button-style {
+   @apply text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main;
+}
+
+a {
+   cursor: pointer;
+}
+
+

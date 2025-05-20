@@ -1,0 +1,8 @@
+<h2 #related class="text-4xl font-bold my-5">Related Products</h2>
+@defer (on viewport(related)) {
+<div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6 mb-5">
+    @for (product of relatedProducts; track $index) {
+    <app-product-item [product]="product"></app-product-item>
+    }
+</div>
+}

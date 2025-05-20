@@ -1,0 +1,9 @@
+<input 
+class="input-style" 
+[placeholder]="placeholder"
+[type]="type" 
+[value]="value"
+(input)="$any($event.target).value" 
+(blur)="onTouched()" 
+
+/>

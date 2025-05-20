@@ -1,0 +1,52 @@
+<div class="card shadow-2xl rounded-2xl my-5 p-10">
+    <p-table [value]="allOrders" dataKey="i" [tableStyle]="{ 'min-width': '50rem',}">
+        <ng-template #header>
+            <tr>
+                <th>Product Id</th>
+                <th>Is Paid</th>
+                <th>Payment Method Type</th>
+                <th>Total Order Price</th>
+                <th>View</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-allOrders let-rowIndex="rowIndex">
+            <tr>
+                <td>{{allOrders.id}}</td>
+                <td>{{allOrders.isPaid}}</td>
+                <td> {{allOrders.paymentMethodType}}</td>
+                <td>{{allOrders.totalOrderPrice}}</td>
+                <td class="cursor-pointer"><i (click)="openMoel(rowIndex)" class="fa-solid fa-eye"></i></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+@if (showModel) {
+<div class="fixed inset-0 h-screen w-screen bg-slate-600 bg-opacity-10 z-20 flex justify-center items-center">
+    <div class="bg-white">
+        <div class="p-5 text-end cursor-pointer text-2xl"><i (click)="showModel =false" class="fa-solid fa-xmark text-red-800"></i></div>
+        <p-table [value]="cartItems" scrollHeight="400px" [tableStyle]="{ 'min-width': '50rem'}">
+            <ng-template #header>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-cartItems let-rowIndex="rowIndex">
+                <tr>
+                    <td><img [src]="cartItems.product.imageCover" [alt]="cartItems.product.title"
+                            class="size-32 rounded-sm object-cover" /></td>
+                    <td>{{cartItems.product.title.split(' ').slice(0,
+                        3).join(' ')}}</td>
+                    <td>{{cartItems.product.category.name}}</td>
+                    <td>{{cartItems?.price}} EGP</td>
+                    <td>{{cartItems.price * cartItems.count}} EGP</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+}

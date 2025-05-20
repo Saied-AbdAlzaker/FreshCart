@@ -1,0 +1,20 @@
+@if (nameControll?.errors && nameControll?.touched) {
+<div class="flex text-sm text-red-800 rounded-lg dark:bg-gray-800 dark:text-red-400" role="alert">
+    <ul class="mt-1.5 list-disc list-inside">
+        @if (nameControll?.getError('required')) {
+        <li class="list-none">required</li>
+        }@else if (nameControll?.getError('minlength')) {
+        <li class="list-none">Min character is 5</li>
+        }@else if (nameControll?.getError('maxlength')) {
+        <li class="list-none">Max character is 20</li>
+        }@else if (nameControll?.getError('email')) {
+        <li class="list-none">Invalid email</li>
+        }@else if (nameControll?.getError('pattern')) {
+        <li class="list-none">Invalid pattern</li>
+        }
+        <!-- @else if (nameControll.getError('misMatch')) {
+        <li class="list-none">password and new password dosen`t match</li>
+        } -->
+    </ul>
+</div>
+}

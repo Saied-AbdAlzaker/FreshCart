@@ -1,0 +1,143 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmitForm()" class="max-w-md mx-auto my-5">
+    <h2 class="text-3xl text-main">Register Now</h2>
+    <!-- Error -->
+    <div class="text-sm text-red-800 text-center rounded-lg dark:bg-gray-800 dark:text-red-400 my-5" role="alert">
+        {{apiError}}
+    </div>
+    <!-- Name -->
+    <div class="relative z-0 w-full mb-5 group">
+        @let nameControll = registerForm.get('name');
+        <input formControlName="name" type="name" name="floating_name" id="floating_name" class="input-style peer"
+            placeholder="" required />
+        <label for="floating_name"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            User Name
+        </label>
+        @if (nameControll?.errors && nameControll?.touched) {
+        <div class="flex text-sm text-red-800 rounded-lg dark:bg-gray-800 dark:text-red-400" role="alert">
+            <ul class="mt-1.5 list-disc list-inside">
+                @if (nameControll?.getError('required')) {
+                <li class="list-none">Name is required</li>
+                }@else if (nameControll?.getError('minlength')) {
+                <li class="list-none">Min character is 5</li>
+                }@else if (nameControll?.getError('maxlength')) {
+                <li class="list-none">Max character is 20</li>
+                }
+            </ul>
+        </div>
+        }
+
+        <!-- <app-error-message [nameControll]="nameControll"></app-error-message> -->
+    </div>
+    <!-- Email -->
+    <div class="relative z-0 w-full mb-5 group">
+        @let emailControll = registerForm.get('email');
+        <input formControlName="email" type="email" name="floating_email" id="floating_email" class="input-style peer"
+            placeholder="" required />
+        <label for="floating_email"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Email address
+        </label>
+        @if (emailControll?.errors && emailControll?.touched) {
+        <div class="flex text-sm text-red-800 rounded-lg dark:bg-gray-800 dark:text-red-400" role="alert">
+            <ul class="mt-1.5 list-disc list-inside">
+                @if (emailControll?.getError('required')) {
+                <li class="list-none">Email is required</li>
+                }@else if (emailControll?.getError('email')) {
+                <li class="list-none">Invalid email</li>
+                }
+            </ul>
+        </div>
+        }
+        <!-- <app-error-message [nameControll]="emailControll"></app-error-message> -->
+    </div>
+    <!-- Password -->
+    <div class="relative z-0 w-full mb-5 group">
+        @let passwordControll = registerForm.get('password');
+        <input formControlName="password" [type]="togglePass?'password':'text'" name="floating_password"
+            id="floating_password" class="input-style peer relative" placeholder="" required />
+        <label for="floating_password"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Password
+        </label>
+        <span (click)="togglePassword()" class="absolute top-[10%] right-0">
+            @if (togglePass) {
+            <i class="fa fa-eye-slash cursor-pointer text-main"></i>
+            }@else {
+            <i class="fa fa-eye cursor-pointer text-main"></i>
+            }
+        </span>
+        @if (passwordControll?.errors && passwordControll?.touched) {
+        <div class="flex text-sm text-red-800 rounded-lg dark:bg-gray-800 dark:text-red-400" role="alert">
+            <ul class="mt-1.5 list-disc list-inside">
+                @if (passwordControll?.getError('required')) {
+                <li class="list-none">Password is required</li>
+                }@else if (passwordControll?.getError('pattern')) {
+                <li class="list-none">Invalid password</li>
+                }
+            </ul>
+        </div>
+        }
+        <!-- <app-error-message [nameControll]="passwordControll"></app-error-message> -->
+    </div>
+    <!-- New Password -->
+    <div class="relative z-0 w-full mb-5 group">
+        @let rePasswordControll = registerForm.get('rePassword');
+        <input formControlName="rePassword" [type]="toggleNewPass? 'password':'text'" name="floating_rePassword"
+            id="floating_rePassword" class="input-style peer" placeholder="" required />
+        <label for="floating_rePassword"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            New Password
+        </label>
+        <span (click)="toggleConfirmPassword()" class="absolute top-[10%] right-0">
+            @if (toggleNewPass) {
+            <i class="fa fa-eye-slash cursor-pointer text-main"></i>
+            }@else {
+            <i class="fa fa-eye cursor-pointer text-main"></i>
+            }
+        </span>
+        @if (rePasswordControll?.touched && (rePasswordControll?.errors || registerForm.getError('misMatch'))) {
+        <div class="flex text-sm text-red-800 rounded-lg dark:bg-gray-800 dark:text-red-400" role="alert">
+            <ul class="mt-1.5 list-disc list-inside">
+                @if (rePasswordControll?.getError('required')) {
+                <li class="list-none">New password is required</li>
+                } @else if (registerForm.getError('misMatch')) {
+                <li class="list-none">Password and new password dosen`t match</li>
+                }
+            </ul>
+        </div>
+        }
+        <!-- <app-error-message [nameControll]="rePasswordControll"></app-error-message> -->
+    </div>
+    <!-- Phone -->
+    <div class="relative z-0 w-full mb-5 group">
+        @let phoneControll = registerForm.get('phone');
+        <input formControlName="phone" type="phone" name="floating_phone" id="floating_phone" class="input-style peer"
+            placeholder="" required />
+        <label for="floating_phone"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Phone
+        </label>
+        @if (phoneControll?.errors && phoneControll?.touched) {
+        <div class="flex text-sm text-red-800 rounded-lg dark:bg-gray-800 dark:text-red-400" role="alert">
+            <ul class="mt-1.5 list-disc list-inside">
+                @if (phoneControll?.getError('required')) {
+                <li class="list-none">Phone is required</li>
+                }@else if (phoneControll?.getError('pattern')) {
+                <li class="list-none">Invalid phone</li>
+                }
+            </ul>
+        </div>
+        }
+        <!-- <app-error-message [nameControll]="phoneControll"></app-error-message> -->
+    </div>
+    <div class="text-end">
+        <button type="submit" class="button-style" [disabled]="registerForm.invalid">
+            @if (isLoading) {
+            <i class="fa fa-spin fa-spinner"></i>
+            }@else {
+            Submit
+            }
+        </button>
+    </div>
+</form>
