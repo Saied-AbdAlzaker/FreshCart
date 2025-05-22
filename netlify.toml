@@ -1,6 +1,8 @@
-[build]
-  command = "ng build --configuration=production"
-  publish = "dist/fresh-cart"
-
 [[plugins]]
-  package = "@netlify/angular-runtime"
+package = "@netlify/angular-runtime"
+
+[build]
+  publish = "dist/fresh-cart"
+  command = "ng build --configuration production"
+
+
