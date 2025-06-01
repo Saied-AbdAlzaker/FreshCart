@@ -1,1 +1,22 @@
-<p>brands works!</p>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-5">
+    @for (brand of brandList; track $index) {
+    <a [routerLink]="[`/brandDetails`,brand._id]" routerLinkActive="router-link-active"
+        class="group relative block bg-black">
+        <img [alt]="brand.name" [src]="brand.image"
+            class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
+
+        <div class="relative p-4 sm:p-6 lg:p-8">
+            <p class="font-medium tracking-widest text-sm text-white uppercase">{{brand.slug}}</p>
+
+            <div class="mt-32 sm:mt-48 lg:mt-64">
+                <div
+                    class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                    <p class="text-sm text-white">
+                        {{brand.name}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </a>
+    }
+</div>

@@ -1,6 +1,7 @@
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-5">
     @for (category of categoriesList; track $index) {
-    <a href="#" class="group relative block bg-black">
+    <a [routerLink]="[`/categoryDetails`,category._id]" routerLinkActive="router-link-active"
+        class="group relative block bg-black">
         <img [alt]="category.name" [src]="category.image"
             class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
 

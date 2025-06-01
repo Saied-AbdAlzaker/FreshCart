@@ -10,9 +10,9 @@ module.exports = {
         main:"#0aad0a",
         gray:"#333"
       },
-      // container:{
-      //   center:true
-      // }
+      container:{
+        center:true
+      }
     },
   },
   plugins: [

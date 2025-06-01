@@ -1,18 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CategoriesService } from '../../../shared/services/categories/categories.service';
 import { Category } from '../../../shared/interfaces/category';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
-export class CategoriesComponent implements OnInit{
+export class CategoriesComponent implements OnInit {
 
-  categoriesList!:Category[]
+  categoriesList!: Category[]
 
-_categoriesService = inject(CategoriesService)
+  _categoriesService = inject(CategoriesService)
 
   ngOnInit(): void {
     this.getCategories()

@@ -1,8 +1,20 @@
- export interface Category {
+export interface Category {
+  _id: string
+  name: string
+  slug: string
+  image: string
+}
+
+export interface SpecificCategory {
+  _id: string
+  name: string
+  slug: string
+  image: string
+}
+
+  export interface Subcategory {
     _id: string
     name: string
     slug: string
-    image: string
+    category: string
   }
-  
-  

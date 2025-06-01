@@ -18,8 +18,10 @@ export const routes: Routes = [
     { path: 'products', canActivate: [authGuard], loadComponent: () => import('./features/pages/products/products.component').then(c => c.ProductsComponent) },
     { path: 'productDetails/:id', canActivate: [authGuard], loadComponent: () => import('./features/pages/product-details/product-details.component').then(c => c.ProductDetailsComponent) },
     { path: 'categories', canActivate: [authGuard], loadComponent: () => import('./features/pages/categories/categories.component').then(c => c.CategoriesComponent) },
+    { path: 'categoryDetails/:id', canActivate: [authGuard], loadComponent: () => import('./features/pages/category-details/category-details.component').then(c => c.CategoryDetailsComponent) },
     { path: 'cart', canActivate: [authGuard], loadComponent: () => import('./features/pages/cart/cart.component').then(c => c.CartComponent) },
     { path: 'brands', canActivate: [authGuard], loadComponent: () => import('./features/pages/brands/brands.component').then(c => c.BrandsComponent) },
+    { path: 'brandDetails/:id', canActivate: [authGuard], loadComponent: () => import('./features/pages/brand-details/brand-details.component').then(c => c.BrandDetailsComponent) },
     { path: 'checkout/:cartId', canActivate: [authGuard], loadComponent: () => import('./features/pages/checkout/checkout.component').then(c => c.CheckoutComponent) },
     { path: 'allorders', canActivate: [authGuard], loadComponent: () => import('./features/pages/orders/orders.component').then(c => c.OrdersComponent) },
 
