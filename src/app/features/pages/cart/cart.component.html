@@ -6,8 +6,8 @@
         <div class="mt-8">
             <div class='flex items-center gap-4 p-2 border border-t-0 border-r-0 border-l-0  border-b-fuchsia-950'>
                 <div>
-                    <h4 class='text-main'>Total Cart Items: {{userCart?.numOfCartItems}}</h4>
-                    <h4 class='text-main'>Total Cart Price: {{userCart?.data?.totalCartPrice}}</h4>
+                    <h4 class='text-main'>Total Cart Items: {{userCart.numOfCartItems}}</h4>
+                    <h4 class='text-main'>Total Cart Price: {{userCart.data.totalCartPrice}}</h4>
                 </div>
                 <div class='flex flex-1 items-center justify-end gap-2'>
                     <button (click)="clear()" class="border border-red-600 px-4 py-2 rounded-2xl
@@ -16,7 +16,7 @@
                     </button>
                 </div>
             </div>
-            @for(cart of userCart?.data?.products;track $index){
+            @for(cart of userCart.data.products;track $index){
             <ul class="space-y-4 mt-3 border border-t-0 border-r-0 border-l-0  border-b-fuchsia-950 p-3">
                 <li class="flex items-center gap-4">
                     <img [src]="cart.product.imageCover" [alt]="cart.product.title"
@@ -32,7 +32,7 @@
                             </div>
                             <div class="text-main">
                                 <dt class="inline me-2">Price:</dt>
-                                <dd class="inline">{{cart?.price}} EGP</dd>
+                                <dd class="inline">{{cart.price}} EGP</dd>
                             </div>
                             <div>
                                 <dt class='inline me-2'>Total Price:</dt>
@@ -46,7 +46,7 @@
                                 hover:bg-green-600 hover:text-white cursor-pointer">
                                 -
                             </a>
-                            <span class='mx-3'>{{cart?.count}}</span>
+                            <span class='mx-3'>{{cart.count}}</span>
                             <a (click)="updateCart(cart.product._id,cart.count+1)" class="inline-block rounded-sm border border-green-600 px-3 py-1 font-medium
                                 hover:bg-green-600 hover:text-white cursor-pointer">
                                 +

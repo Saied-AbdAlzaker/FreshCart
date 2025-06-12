@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { SpecificBrand } from '../../../shared/interfaces/brand';
+import { Brand, SpecificBrand } from '../../../shared/interfaces/brand';
 import { BrandService } from '../../../shared/services/brand/brand.service';
 import { ActivatedRoute } from '@angular/router';
 

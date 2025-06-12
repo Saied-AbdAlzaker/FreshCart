@@ -6,6 +6,14 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Server
   },
   {
+    path: 'categoryDetails/:id',
+    renderMode: RenderMode.Server
+  },
+  {
+    path: 'brandDetails/:id',
+    renderMode: RenderMode.Server
+  },
+  {
     path: 'checkout/:cartId',
     renderMode: RenderMode.Server
   },
