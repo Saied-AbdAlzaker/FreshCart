@@ -41,6 +41,7 @@ export class NavbarComponent implements OnInit {
 
   showDialog() {
     this.visible = true;
+    this.isLoading = false
   }
 
   logout() {
